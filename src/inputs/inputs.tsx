@@ -2,6 +2,7 @@ import React from "react";
 import {
   StyledButton,
   StyledButtonGroup,
+  StyledButtonGroupLabel,
   StyledInput,
   StyledInputAsButton,
   StyledLabel,
@@ -29,6 +30,7 @@ interface buttonGroupProps {
 const ButtonGroup = (props: buttonGroupProps) => {
   return (
     <StyledButtonGroup>
+      <StyledButtonGroupLabel>Select Tip %</StyledButtonGroupLabel>
       {props.buttons.map((button, index) => (
         <Button
           buttonText={`${button}%`}

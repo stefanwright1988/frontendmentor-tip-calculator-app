@@ -19,16 +19,20 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   border-radius: 10px;
+  padding: 20px;
 `;
 
 const Calculator = styled.div`
   width: calc(50% - 20px);
-  padding: 20px;
 `;
 
 const Results = styled.div`
   width: calc(50% - 20px);
-  padding: 20px;
+  border-radius: 20px;
+  margin-left: 40px;
+  background-color: ${(props) => props.theme.palette.darkGrayishCyan};
+  display: flex;
+  flex-direction: column;
 `;
 
 export { Container, MainWrapper, Calculator, Results };

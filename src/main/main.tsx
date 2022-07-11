@@ -11,7 +11,22 @@ const Main = () => {
           <ButtonGroup buttons={[5, 10, 15, 25, 50]} />
           <TextInput labelText="# Of People" type="text" defaultVal={5} />
         </Calculator>
-        <Results></Results>
+        <Results>
+          <div>
+            <div>
+              <p>Tip Amount</p>
+              <span>/ person</span>
+            </div>
+            <div>£123.00</div>
+          </div>
+          <div>
+            <div>
+              <p>Total Amount</p>
+              <span>/ person</span>
+            </div>
+            <div>£123.00</div>
+          </div>
+        </Results>
       </Container>
       <div className="attribution">
         Challenge by{" "}
