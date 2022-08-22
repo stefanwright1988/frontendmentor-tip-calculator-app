@@ -48,7 +48,11 @@ const StyledLabel = styled.label`
   width: 100%;
 `;
 
-const StyledInput = styled.input`
+interface iStyledInput {
+  icon?: string;
+}
+
+const StyledInput = styled.input<iStyledInput>`
   width: 100%;
   height: 24px;
   font-size: ${(props) => props.theme.inputFontSize};
@@ -61,6 +65,9 @@ const StyledInput = styled.input`
   padding: 18px 20px;
   margin: 8px 0;
   box-sizing: border-box;
+  background-image: url(${(props) => props.icon});
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
 `;
 
 export {

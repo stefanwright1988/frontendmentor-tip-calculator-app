@@ -13,12 +13,17 @@ interface inputProps {
   labelText: string;
   type: "text" | "number";
   defaultVal: number | string;
+  icon?: string;
 }
 const TextInput = (props: inputProps) => {
   return (
     <>
       <StyledLabel>{props.labelText}</StyledLabel>
-      <StyledInput type={props.type} defaultValue={props.defaultVal} />
+      <StyledInput
+        type={props.type}
+        defaultValue={props.defaultVal}
+        icon={props.icon}
+      />
     </>
   );
 };
