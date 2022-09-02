@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEventHandler, Dispatch, SetStateAction } from "react";
 import {
   StyledButton,
   StyledButtonGroup,
@@ -14,15 +14,19 @@ interface inputProps {
   type: "text" | "number";
   defaultVal: number | string;
   icon?: string;
+  id: string;
+  onChange: ChangeEventHandler<HTMLInputElement>;
 }
 const TextInput = (props: inputProps) => {
   return (
     <>
-      <StyledLabel>{props.labelText}</StyledLabel>
+      <StyledLabel htmlFor={props.id}>{props.labelText}</StyledLabel>
       <StyledInput
+        id={props.id}
         type={props.type}
         defaultValue={props.defaultVal}
         icon={props.icon}
+        onChange={props.onChange}
       />
     </>
   );
@@ -30,6 +34,8 @@ const TextInput = (props: inputProps) => {
 
 interface buttonGroupProps {
   buttons: Array<number>;
+  onMouseDownOrChange: Dispatch<SetStateAction<number>>;
+  selectedVal: number;
 }
 
 const ButtonGroup = (props: buttonGroupProps) => {
@@ -38,22 +44,39 @@ const ButtonGroup = (props: buttonGroupProps) => {
       <StyledButtonGroupLabel>Select Tip %</StyledButtonGroupLabel>
       {props.buttons.map((button, index) => (
         <Button
-          buttonText={`${button}%`}
-          state={index === 0 ? "active" : "inactive"}
+          buttonText={button}
+          state={button === props.selectedVal ? "active" : "inactive"}
+          onMouseDown={props.onMouseDownOrChange}
         />
       ))}
-      <StyledInputAsButton type="text" placeholder="Custom" />
+      <StyledInputAsButton
+        type="text"
+        placeholder="Custom"
+        onChange={(e) =>
+          props.onMouseDownOrChange(
+            e.target.value === "" ? 0 : parseFloat(e.target.value)
+          )
+        }
+      />
     </StyledButtonGroup>
   );
 };
 
 interface buttonProps {
-  buttonText: string;
+  buttonText: number;
   state: "active" | "inactive";
+  onMouseDown: Dispatch<SetStateAction<number>>;
 }
 
 const Button = (props: buttonProps) => {
-  return <StyledButton state={props.state}>{props.buttonText}</StyledButton>;
+  return (
+    <StyledButton
+      state={props.state}
+      onMouseDown={() => props.onMouseDown(props.buttonText)}
+    >
+      {props.buttonText}%
+    </StyledButton>
+  );
 };
 
 export { TextInput, Button, ButtonGroup };

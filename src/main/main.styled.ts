@@ -11,6 +11,16 @@ const MainWrapper = styled.main`
   align-items: center;
 `;
 
+const Title = styled.h1`
+  margin-bottom: 1.8rem;
+  font-size: 1.8rem;
+  letter-spacing: 1rem;
+  max-width: 10rem;
+  overflow-wrap: anywhere;
+  line-height: 2.5rem;
+  color: ${(props) => props.theme.palette.veryDarkCyan};
+`;
+
 const Container = styled.div`
   min-width: 60%;
   width: 60%;
@@ -112,6 +122,7 @@ const ResetButton = styled.div`
 
 export {
   Container,
+  Title,
   MainWrapper,
   Calculator,
   Results,
