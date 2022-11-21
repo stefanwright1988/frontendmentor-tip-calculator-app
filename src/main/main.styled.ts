@@ -22,27 +22,38 @@ const Title = styled.h1`
 `;
 
 const Container = styled.div`
-  min-width: 60%;
-  width: 60%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   min-height: 50%;
   background-color: ${(props) => props.theme.palette.white};
   display: flex;
-  flex-direction: row;
-  border-radius: 10px;
-  padding: 20px;
+  border-radius: 20px;
+  margin: 5% 0;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    width: 60%;
+    min-width: 60%;
+  }
 `;
 
 const Calculator = styled.div`
-  width: calc(50% - 20px);
+  width: 90%;
+  @media (min-width: 768px) {
+    width: calc(50% - 20px);
+  }
 `;
 
 const Results = styled.div`
-  width: calc(50% - 20px);
+  width: 90%;
   border-radius: 20px;
-  margin-left: 40px;
   background-color: ${(props) => props.theme.palette.veryDarkCyan};
   display: flex;
   flex-direction: column;
+  @media (min-width: 768px) {
+    width: calc(50% - 20px);
+  }
 `;
 
 const TipAmount = styled.div`
